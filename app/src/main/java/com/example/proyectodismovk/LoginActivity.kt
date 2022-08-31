@@ -42,8 +42,19 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(baseContext, "signInWithEmail:SUCCESS",
                         Toast.LENGTH_SHORT).show()
-                    showMainActivity()
 
+                    val user = FirebaseAuth.getInstance().currentUser
+                    if(user!!.isEmailVerified){
+                        Toast.makeText(baseContext, "User Verified",
+                            Toast.LENGTH_SHORT).show()
+                        showMainActivity()
+                    }else{
+                        user!!.sendEmailVerification()
+                            .addOnSuccessListener {
+                                Toast.makeText(baseContext, "Verify Email",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+                    }
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(baseContext, "Authentication failed.",

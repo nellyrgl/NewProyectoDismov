@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.actionCodeSettings
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -66,6 +67,14 @@ class RegisterActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+
+                        val user = FirebaseAuth.getInstance().currentUser
+                        user!!.sendEmailVerification()
+                            .addOnSuccessListener {
+                                Toast.makeText(baseContext, "Email Sent",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+
                         // Sign in success, update UI with the signed-in user's information
                         Toast.makeText(baseContext, "createUserWithEmail: SUCCESS.",
                             Toast.LENGTH_SHORT).show()
@@ -78,6 +87,8 @@ class RegisterActivity : AppCompatActivity() {
                 }
         }
     }
+
+
 
     private fun switchToLogIn() {
         val intent = Intent(this, LoginActivity::class.java)
