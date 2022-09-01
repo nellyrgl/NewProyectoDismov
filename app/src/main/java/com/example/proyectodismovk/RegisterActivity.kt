@@ -71,17 +71,17 @@ class RegisterActivity : AppCompatActivity() {
                         val user = FirebaseAuth.getInstance().currentUser
                         user!!.sendEmailVerification()
                             .addOnSuccessListener {
-                                Toast.makeText(baseContext, "Email Sent",
+                                Toast.makeText(baseContext, "Correo de verificacion enviado",
                                     Toast.LENGTH_SHORT).show()
                             }
 
                         // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(baseContext, "createUserWithEmail: SUCCESS.",
+                        Toast.makeText(baseContext, "Usuario creado correctamente.",
                             Toast.LENGTH_SHORT).show()
 
                     } else {
                         // If sign in fails, display a message to the user.
-                        Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.makeText(baseContext, "Creacion de usuario fallido.",
                             Toast.LENGTH_SHORT).show()
                     }
                 }
