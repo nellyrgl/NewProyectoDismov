@@ -11,17 +11,17 @@
         android:id="@+id/text_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:text="Registro de nuevo usuario"
-        android:textSize="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/register_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo"
         android:layout_below="@+id/text_register"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:hint="Correo" />
 
     <EditText
         android:id="@+id/register_password"

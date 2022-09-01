@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">ProyectoDismovk</string>
+
+    <array name="names">
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+        <item>Nombre</item>
+    </array>
+
 </resources>

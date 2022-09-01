@@ -18,9 +18,22 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        val btnChat = findViewById<Button>(R.id.chat)
+        btnChat.setOnClickListener { chat() }
+
         val btnLogOut = findViewById<Button>(R.id.btnlogout)
         btnLogOut.setOnClickListener { logoutUser() }
 
+    }
+
+    private  fun chat(){
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val intent = Intent(this, ListOfChatsActivity::class.java)
+            intent.putExtra("user",currentUser.email)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun logoutUser() {
