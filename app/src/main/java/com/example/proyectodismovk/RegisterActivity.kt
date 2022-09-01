@@ -79,6 +79,8 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(baseContext, "createUserWithEmail: SUCCESS.",
                             Toast.LENGTH_SHORT).show()
 
+                        switchToLogIn()
+
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(baseContext, "Authentication failed.",

@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ListOfChatsActivity : AppCompatActivity() {
+    private var user =""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_of_chats)
@@ -15,6 +17,11 @@ class ListOfChatsActivity : AppCompatActivity() {
         val recycle = findViewById<RecyclerView>(R.id.recyclerView)
         recycle.layoutManager =LinearLayoutManager(this)
         recycle.adapter = NamesAdapter()
+
+        intent.getStringExtra("user")?.let { user = it }
+        if(user.isNotEmpty()){
+
+        }
 
         val list = resources.getStringArray(R.array.names)
 
