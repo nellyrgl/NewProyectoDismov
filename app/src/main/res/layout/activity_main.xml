@@ -11,16 +11,32 @@
         android:id="@+id/text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="24dp"
+        android:layout_centerHorizontal="true"
         android:text="Bienvenido!"
-        android:layout_centerInParent="true"
-        android:textSize="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/btnlogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_welcome"
+        android:layout_below="@+id/chat"
         android:text="Cerrar Sesion" />
+
+    <Button
+        android:id="@+id/chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_welcome"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Chat" />
 
 </RelativeLayout>
