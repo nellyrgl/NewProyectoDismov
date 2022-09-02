@@ -4,34 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListOfChatsActivity">
+    tools:context=".ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listChatsRecyclerView"
+        android:id="@+id/messageRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/item_chat" />
+        tools:listitem="@layout/item_message" />
 
-    <EditText
-        android:id="@+id/newChatText"
+    <TextView
+        android:id="@+id/enviarTexto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="688dp"
         android:layout_marginEnd="130dp"
         android:layout_marginBottom="8dp"
-        android:text="Email"
+        android:text="Escribir un mensaje"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/listChatsRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,18 +39,17 @@
         app:layout_constraintVertical_bias="0.209" />
 
     <Button
-        android:id="@+id/newChatButton"
+        android:id="@+id/btnEnviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="664dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        android:text="Buscar"
-        app:layout_constraintBottom_toTopOf="@+id/listChatsRecyclerView"
+        android:text="Enviar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/newChatText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/enviarTexto"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.071" />
 
@@ -58,15 +57,14 @@
         android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="163dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="154dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="8dp"
         android:text="Regresar"
-        app:layout_constraintBottom_toTopOf="@+id/listChatsRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/enviarTexto"
+        app:layout_constraintEnd_toStartOf="@+id/btnEnviar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newChatText" />
-
+        app:layout_constraintTop_toBottomOf="@+id/messageRecyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

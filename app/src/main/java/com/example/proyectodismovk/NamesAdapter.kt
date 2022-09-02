@@ -18,7 +18,7 @@ class NamesAdapter: RecyclerView.Adapter<NamesAdapter.NamesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NamesViewHolder {
         return NamesViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item,parent,false))
+            .inflate(R.layout.item_chat,parent,false))
     }
 
     override fun onBindViewHolder(holder: NamesViewHolder, position: Int) {

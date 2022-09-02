@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/activity_list_of_chats.xml" value="0.2046875" />
+        <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/activity_chat.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/activity_list_of_chats.xml" value="0.1" />
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/activity_login.xml" value="0.1503623188405797" />
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/activity_main.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/activity_register.xml" value="0.1503623188405797" />
+        <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/item_chat.xml" value="0.228125" />
+        <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/item_message.xml" value="0.228125" />
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/list_item.xml" value="0.176" />
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/registro_exitoso.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.35260416666666666" />
