@@ -15,6 +15,19 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 //TODO:implementar el login automatico del usuario si ya tien cuenta y esta verificado
+
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -28,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
         tvSwitchToRegister.setOnClickListener { switchToRegister() }
 
     }
+
 
     private fun authenticateUser(){
         val etEmail = findViewById<EditText>(R.id.login_email)

@@ -48,32 +48,43 @@ class ListOfChatsActivity : AppCompatActivity() {
                 val listChats = chats.toObjects(Chat::class.java)
                 (recycle.adapter as ChatAdapter).setData(listChats)
             }
+
+        userRef.collection("chats")
+            .addSnapshotListener { chats, error ->
+                if (error == null){
+                    chats?.let {
+                        val listChats = it.toObjects(Chat::class.java)
+                        (recycle.adapter as ChatAdapter).setData(listChats)
+                    }
+                }
+            }
+
     }
 
     private fun chatSelected(chat: Chat){
         val intent = Intent(this, ChatActivity::class.java )
-        intent.putExtra("chatID",chat.id)
+        intent.putExtra("chatId",chat.id)
         intent.putExtra("user",user)
         startActivity(intent)
     }
 
     private fun newChat(){
-        val chatID = UUID.randomUUID().toString()
+        val chatId = UUID.randomUUID().toString()
         val otherUser = findViewById<EditText>(R.id.newChatText).text.toString()
         val users = listOf(user, otherUser)
 
         val chat = Chat(
-            id = chatID,
+            id = chatId,
             name = "Chat con $otherUser",
             users = users
         )
 
-        db.collection("chats").document(chatID).set(chat)
-        db.collection("users").document(user).collection("chats").document(chatID).set(chat)
-        db.collection("users").document(otherUser).collection("chats").document(chatID).set(chat)
+        db.collection("chats").document(chatId).set(chat)
+        db.collection("users").document(user).collection("chats").document(chatId).set(chat)
+        db.collection("users").document(otherUser).collection("chats").document(chatId).set(chat)
 
         val intent = Intent(this, ChatActivity::class.java )
-        intent.putExtra("chatID", chatID)
+        intent.putExtra("chatId",chatId)
         intent.putExtra("user",user)
         startActivity(intent)
     }
