@@ -37,8 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_password"
-        android:text="Iniciar Sesion"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:text="Iniciar Sesion" />
 
     <TextView
         android:id="@+id/text_register"
