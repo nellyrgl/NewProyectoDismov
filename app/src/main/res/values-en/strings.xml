@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoDismovk</string>
+    <string name="bienvenido">Welcome!</string>
+    <string name="cerrar_sesion">Log out</string>
+    <string name="chat">Chat</string>
+    <string name="cambiar_lenguaje">Change language</string>
+</resources>

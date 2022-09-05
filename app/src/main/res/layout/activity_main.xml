@@ -15,7 +15,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginBottom="24dp"
         android:layout_centerHorizontal="true"
-        android:text="Bienvenido!"
+        android:text="@string/bienvenido"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,8 +26,8 @@
         android:id="@+id/btnlogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chat"
-        android:text="Cerrar Sesion" />
+        android:layout_below="@+id/cambiar_lenguaje"
+        android:text="@string/cerrar_sesion" />
 
     <Button
         android:id="@+id/chat"
@@ -37,6 +37,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:text="Chat" />
+        android:text="@string/chat"/>
+    <Button
+        android:id="@+id/cambiar_lenguaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat"
+        android:layout_marginBottom="24dp"
+        android:text="@string/cambiar_lenguaje"/>
+
 
 </RelativeLayout>

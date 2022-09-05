@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">ProyectoDismovk</string>
-
+    <string name="bienvenido">Bienvenido!</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="chat">Chat</string>
+    <string name="cambiar_lenguaje">Cambiar lenguaje</string>
     <array name="names">
         <item>Nombre</item>
         <item>Nombre</item>

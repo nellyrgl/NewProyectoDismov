@@ -1,12 +1,17 @@
 package com.example.proyectodismovk
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,9 +22,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         auth = Firebase.auth
-
+        loadLocate()
         val btnChat = findViewById<Button>(R.id.chat)
         btnChat.setOnClickListener { chat() }
+
+        val btnLenguaje = findViewById<Button>(R.id.cambiar_lenguaje)
+        btnLenguaje.setOnClickListener { cambiar_lenguaje() }
+        val actionBar = supportActionBar
+        actionBar!!.title = resources.getString(R.string.app_name)
 
         val btnLogOut = findViewById<Button>(R.id.btnlogout)
         btnLogOut.setOnClickListener { logoutUser() }
@@ -34,6 +44,44 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun cambiar_lenguaje() {
+        val listItems = arrayOf("Español", "English")
+
+        val mBuilder = AlertDialog.Builder(this@MainActivity)
+        mBuilder.setTitle("Escoger Lenguaje")
+        mBuilder.setSingleChoiceItems(listItems, -1){ dialog, which ->
+            if (which == 0){
+                setLocate ("es")
+                recreate()
+            }
+            else if (which == 1){
+                setLocate ("en")
+                recreate()
+            }
+            dialog.dismiss()
+        }
+        val mDialog = mBuilder.create()
+        mDialog.show()
+    }
+
+    private fun setLocate(Lang: String){
+        val locale = Locale(Lang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
+        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang",Lang)
+        editor.apply()
+    }
+
+    private fun loadLocate(){
+        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
+        val language = sharedPreferences.getString("My_Lang", "")
+        setLocate(language.toString())
     }
 
     private fun logoutUser() {
