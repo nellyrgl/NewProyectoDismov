@@ -6,55 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:layout_margin="10dp">
-
     <TextView
         android:id="@+id/text_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="Registro de nuevo usuario"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_register"
+            android:layout_marginBottom="20dp"
+            android:hint="Correo" />
 
-    <EditText
-        android:id="@+id/register_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_register"
-        android:layout_marginBottom="20dp"
-        android:hint="Correo" />
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:layout_below="@+id/register_email"
+            android:layout_marginBottom="20dp"/>
 
-    <EditText
-        android:id="@+id/register_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:layout_below="@+id/register_email"
-        android:layout_marginBottom="20dp"/>
+        <EditText
+            android:id="@+id/register_password_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirmar Contraseña"
+            android:inputType="textPassword"
+            android:layout_below="@+id/register_password"
+            android:layout_marginBottom="20dp"/>
 
-    <EditText
-        android:id="@+id/register_password_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Confirmar Contraseña"
-        android:inputType="textPassword"
-        android:layout_below="@+id/register_password"
-        android:layout_marginBottom="20dp"/>
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_password_confirm"
+            android:text="Registrarse"
+            android:layout_marginBottom="20dp"/>
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register_password_confirm"
-        android:text="Registrarse"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:id="@+id/text_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register"
-        android:text="Iniciar sesion"
-        android:layout_marginBottom="20dp"
-        android:textAlignment="center"/>
-</RelativeLayout>
+        <TextView
+            android:id="@+id/text_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register"
+            android:text="Iniciar sesion"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"/>
+    </RelativeLayout>
