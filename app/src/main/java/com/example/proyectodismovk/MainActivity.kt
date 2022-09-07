@@ -1,13 +1,16 @@
 package com.example.proyectodismovk
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -16,6 +19,9 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+
+    val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+    val requestcode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,30 @@ class MainActivity : AppCompatActivity() {
         val btnLogOut = findViewById<Button>(R.id.btnlogout)
         btnLogOut.setOnClickListener { logoutUser() }
 
+        val btnVideo = findViewById<Button>(R.id.video)
+        btnVideo.setOnClickListener { video() }
+
+        if(!isPermissionGranted()){
+            askPermissions()
+        }
+    }
+
+    private fun video() {
+        val intent = Intent(this, CallActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun isPermissionGranted(): Boolean{
+        permissions.forEach {
+            if(ActivityCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED)
+                return false
+        }
+        return true
+    }
+
+    private fun askPermissions(){
+        ActivityCompat.requestPermissions(this, permissions, requestcode)
     }
 
     private  fun chat(){
