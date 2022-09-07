@@ -10,14 +10,13 @@ remoteVideo.onplaying = () => { remoteVideo.style.opacity = 1 }
 let peer
 function init(userId) {
     peer = new Peer(userId,{
-        host: '192.168.0.4',
-        port: 9000,
-        path:'/videocallapp'
+        port: 443,
+        path: '/'
     
     })
 
     peer.on('open', () => {
-        //WE WILL MAKE A CALL TO A KOTLIN IN ANDROID
+        Android.onPeerConnected()
     })
 
     listen()
