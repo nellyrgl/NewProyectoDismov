@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
@@ -21,7 +22,9 @@ class CallActivity : AppCompatActivity() {
 
     var isPeerConnected = false
 
-    var firebaseRef = Firebase.database.getReference("users")
+
+    val database = Firebase.database
+    val firebaseRef = database.getReference("users")
 
     var isAudio = true
     var isVideo = true
@@ -30,7 +33,13 @@ class CallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_call)
 
-        username = intent.getStringExtra("users")!!
+        intent.getStringExtra("user")?.let { username = it }
+
+        if(username.isNotEmpty()){
+            Toast.makeText(baseContext, "El usuario es: "+username, Toast.LENGTH_SHORT).show()
+        }
+
+        firebaseRef.setValue("Hello, World!")
 
         val callBtn = findViewById<Button>(R.id.callBtn)
         callBtn.setOnClickListener {
@@ -120,8 +129,8 @@ class CallActivity : AppCompatActivity() {
 
     private fun initializePeer() {
         uniqueId = getUniqueID()
-
         callJavascriptFunction("javascript:init(\"${uniqueId}\")")
+
         firebaseRef.child(username).child("incoming").addValueEventListener(object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
