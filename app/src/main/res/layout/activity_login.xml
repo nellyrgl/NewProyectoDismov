@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:layout_margin="10dp">
-
+    
     <TextView
         android:id="@+id/text_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ingrese credenciales de inicio de sesion"
-        android:textSize="20dp"
+        android:text="@string/ingrese_credenciales_de_inicio_de_sesion"
+        android:textSize="20sp"
         android:layout_marginBottom="20dp"/>
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo"
+        android:hint="@string/correo"
         android:layout_below="@+id/text_login"
         android:layout_marginBottom="20dp"/>
 
@@ -27,7 +27,7 @@
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
+        android:hint="@string/contrase_a"
         android:inputType="textPassword"
         android:layout_below="@+id/login_email"
         android:layout_marginBottom="20dp"/>
@@ -38,14 +38,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_password"
         android:layout_marginBottom="20dp"
-        android:text="Iniciar Sesion" />
+        android:text="@string/iniciar_sesion" />
 
     <TextView
         android:id="@+id/text_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login"
-        android:text="Registrarse"
+        android:text="@string/registrarse"
         android:layout_marginBottom="20dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"/>-->
 </RelativeLayout>
