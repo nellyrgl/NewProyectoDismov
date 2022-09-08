@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         loadLocate()
+
+        Firebase.initialize(this)
+
         val btnChat = findViewById<Button>(R.id.chat)
         btnChat.setOnClickListener { chat() }
 
@@ -49,7 +53,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun video() {
+        val currentUser = auth.currentUser
         val intent = Intent(this, CallActivity::class.java)
+        if (currentUser != null) {
+            intent.putExtra("user",currentUser.email)
+        }
         startActivity(intent)
         finish()
     }

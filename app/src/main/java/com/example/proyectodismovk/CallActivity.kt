@@ -8,10 +8,9 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.*
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
@@ -21,7 +20,8 @@ class CallActivity : AppCompatActivity() {
 
     var isPeerConnected = false
 
-    var firebaseRef = Firebase.database.getReference("users")
+    val db = Firebase.database
+    val firebaseRef = db.getReference("users")
 
     var isAudio = true
     var isVideo = true
@@ -30,7 +30,12 @@ class CallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_call)
 
-        username = intent.getStringExtra("users")!!
+        intent.getStringExtra("user")?.let { username = it }
+        firebaseRef.child("users").setValue(username)
+
+        if(username.isNotEmpty()){
+            Toast.makeText(baseContext, "El usuario es: "+username, Toast.LENGTH_SHORT).show()
+        }
 
         val callBtn = findViewById<Button>(R.id.callBtn)
         callBtn.setOnClickListener {
@@ -62,8 +67,8 @@ class CallActivity : AppCompatActivity() {
             return
         }
 
-        firebaseRef.child(friendsUsername).child("incoming").setValue(username)
-        firebaseRef.child(friendsUsername).child("isAvailable").addValueEventListener(object: ValueEventListener {
+        firebaseRef.child("users").child("incoming").setValue(username)
+        firebaseRef.child("friendsUsername").child("isAvailable").addValueEventListener(object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -76,7 +81,7 @@ class CallActivity : AppCompatActivity() {
     }
 
     private fun listenForConnId() {
-        firebaseRef.child(friendsUsername).child("connId").addValueEventListener(object: ValueEventListener {
+        firebaseRef.child("friendsUsername").child("connId").addValueEventListener(object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -120,9 +125,9 @@ class CallActivity : AppCompatActivity() {
 
     private fun initializePeer() {
         uniqueId = getUniqueID()
-
         callJavascriptFunction("javascript:init(\"${uniqueId}\")")
-        firebaseRef.child(username).child("incoming").addValueEventListener(object: ValueEventListener {
+
+        firebaseRef.child("users").child("incoming").addValueEventListener(object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -141,8 +146,8 @@ class CallActivity : AppCompatActivity() {
 
         val acceptBtn = findViewById<ImageView>(R.id.acceptBtn)
         acceptBtn.setOnClickListener {
-            firebaseRef.child(username).child("connId").setValue(uniqueId)
-            firebaseRef.child(username).child("isAvailable").setValue(true)
+            firebaseRef.child("users").child("connId").setValue(uniqueId)
+            firebaseRef.child("users").child("isAvailable").setValue(true)
 
             callLayout.visibility = View.GONE
             switchToControls()
@@ -150,7 +155,7 @@ class CallActivity : AppCompatActivity() {
 
         val rejectBtn = findViewById<ImageView>(R.id.rejectBtn)
         rejectBtn.setOnClickListener {
-            firebaseRef.child(username).child("incoming").setValue(null)
+            firebaseRef.child("users").child("incoming").setValue(null)
             callLayout.visibility = View.GONE
         }
     }
@@ -183,7 +188,7 @@ class CallActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         val webView = findViewById<WebView>(R.id.webView)
-        firebaseRef.child(username).setValue(null)
+        firebaseRef.child("users").setValue(null)
         webView.loadUrl("about:blank")
         super.onDestroy()
     }
