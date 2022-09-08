@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         val listItems = arrayOf("Español", "English")
 
         val mBuilder = AlertDialog.Builder(this@MainActivity)
-        mBuilder.setTitle("Escoger Lenguaje")
+        mBuilder.setTitle(getString(R.string.lenguaje))
         mBuilder.setSingleChoiceItems(listItems, -1){ dialog, which ->
             if (which == 0){
                 setLocate ("es")
