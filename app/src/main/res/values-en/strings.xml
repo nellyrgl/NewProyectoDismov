@@ -5,5 +5,5 @@
     <string name="cerrar_sesion">Log out</string>
     <string name="chat">Chat</string>
     <string name="cambiar_lenguaje">Change language</string>
-    <string name="lenguaje">Language</string>
+    <string name="lenguaje">Choose Language</string>
 </resources>

@@ -4,7 +4,7 @@
     <string name="cerrar_sesion">Cerrar Sesion</string>
     <string name="chat">Chat</string>
     <string name="cambiar_lenguaje">Cambiar lenguaje</string>
-    <string name="lenguaje">Lenguaje</string>
+    <string name="lenguaje">Escoger Lenguaje</string>
     <array name="names">
         <item>Nombre</item>
         <item>Nombre</item>
