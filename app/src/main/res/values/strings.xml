@@ -4,6 +4,15 @@
     <string name="cerrar_sesion">Cerrar Sesion</string>
     <string name="chat">Chat</string>
     <string name="cambiar_lenguaje">Cambiar lenguaje</string>
+    <string name="lenguaje">Escoger Lenguaje</string>
+    <string name="video">Video</string>
+    <string name="ingrese_credenciales_de_inicio_de_sesion">Ingrese credenciales de inicio de sesion</string>
+    <string name="correo">Correo</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="registrarse">Registrarse!</string>
+    <string name="nuevo_usuario">Registro de nuevo usuario</string>
+    <string name="confirmar_contrase_a">Confirmar Contraseña</string>
     <array name="names">
         <item>Nombre</item>
         <item>Nombre</item>
