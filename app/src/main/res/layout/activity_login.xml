@@ -60,7 +60,7 @@
         app:startIconDrawable="@drawable/ic_lock"
         app:helperText="Requerido*"
         app:helperTextTextColor="@color/red"
-        app:endIconMode="password_toggle"
+        app:passwordToggleEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email_TIL">

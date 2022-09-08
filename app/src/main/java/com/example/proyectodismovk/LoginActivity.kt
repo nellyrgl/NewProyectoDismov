@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-
     private fun authenticateUser(){
         val etEmail = findViewById<EditText>(R.id.login_email)
         val email = etEmail.text.toString().trim()
