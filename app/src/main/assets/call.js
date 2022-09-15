@@ -9,6 +9,7 @@ remoteVideo.onplaying = () => { remoteVideo.style.opacity = 1 }
 
 let peer
 function init(userId) {
+    console.log("El Num de usuario js: "+userId);
     peer = new Peer(userId,{
         port: 443,
         path: '/'
@@ -48,6 +49,7 @@ function listen() {
 }
 
 function startCall(otherUserId) {
+    console.log("el usuario AMIGO js es: "+otherUserId);
     navigator.getUserMedia({
         audio: true,
         video: true
