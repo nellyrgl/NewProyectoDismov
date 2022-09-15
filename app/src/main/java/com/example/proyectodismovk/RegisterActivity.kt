@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -66,6 +67,7 @@ class RegisterActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        switchToLogIn()
 
                         val user = FirebaseAuth.getInstance().currentUser
                         user!!.sendEmailVerification()
@@ -92,7 +94,8 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun switchToLogIn() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java).apply {
+        }
         startActivity(intent)
         finish()
     }

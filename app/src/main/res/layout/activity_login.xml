@@ -7,6 +7,18 @@
     android:layout_margin="10dp"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:id="@+id/register_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/bienvenida_login"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_email_TIL"
         android:layout_width="390dp"
@@ -15,11 +27,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         app:startIconDrawable="@drawable/ic_person"
-        app:helperText="@string/requerido"
-        app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_text"
         android:hint="@string/correo">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -37,8 +47,6 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/contrase_a"
         app:startIconDrawable="@drawable/ic_lock"
-        app:helperText="Requerido*"
-        app:helperTextTextColor="@color/red"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
