@@ -13,33 +13,11 @@
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/item_message.xml" value="0.228125" />
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/list_item.xml" value="0.176" />
         <entry key="..\:/Users/Nelly/AndroidStudioProjects/GitHub/NewProyectoDismov/app/src/main/res/layout/registro_exitoso.xml" value="0.2421875" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         <entry key="app/src/main/res/layout/activity_call.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-<<<<<<< HEAD
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.35260416666666666" />
-=======
-        <entry key="app/src/main/res/layout/activity_call.xml" value="0.35260416666666666" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.35260416666666666" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
->>>>>>> 61cc924 (cambio en vista de registro)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33697916666666666" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.33608815426997246" />
         <entry key="app/src/main/res/layout/test.xml" value="0.3515625" />
       </map>
     </option>
