@@ -14,4 +14,5 @@
     <string name="registrarse">Sign Up!</string>
     <string name="nuevo_usuario">New User Sign Up</string>
     <string name="confirmar_contrase_a">Confirm Password</string>
+    <string name="requerido">Required*</string>
 </resources>

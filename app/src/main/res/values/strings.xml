@@ -13,6 +13,7 @@
     <string name="registrarse">Registrarse!</string>
     <string name="nuevo_usuario">Registro de nuevo usuario</string>
     <string name="confirmar_contrase_a">Confirmar Contraseña</string>
+    <string name="requerido">Requerido*</string>
     <array name="names">
         <item>Nombre</item>
         <item>Nombre</item>

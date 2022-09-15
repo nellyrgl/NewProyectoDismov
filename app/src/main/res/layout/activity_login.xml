@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     tools:context=".LoginActivity">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_email_TIL"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:startIconDrawable="@drawable/ic_person"
+        app:helperText="@string/requerido"
+        app:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/correo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_password_TIL"
+=======
+=======
+>>>>>>> Stashed changes
     <!--
     <TextView
         android:id="@+id/text_login"
@@ -30,11 +61,23 @@
         app:layout_constraintTop_toTopOf="parent" />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_email_TIL"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+        android:hint="@string/contrase_a"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:helperText="@string/requerido"
+        app:helperTextTextColor="@color/red"
+        app:passwordToggleEnabled="true"
+=======
         app:startIconDrawable="@drawable/ic_person"
         app:helperText="Requerido*"
         app:helperTextTextColor="@color/red"
@@ -60,7 +103,36 @@
         app:startIconDrawable="@drawable/ic_lock"
         app:helperText="Requerido*"
         app:helperTextTextColor="@color/red"
-        app:passwordToggleEnabled="true"
+        app:endIconMode="password_toggle"
+>>>>>>> Stashed changes
+=======
+        app:startIconDrawable="@drawable/ic_person"
+        app:helperText="Requerido*"
+        app:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/correo"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_password_TIL"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/contrase_a"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:helperText="Requerido*"
+        app:helperTextTextColor="@color/red"
+        app:endIconMode="password_toggle"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email_TIL">
@@ -69,8 +141,17 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+            android:inputType="textPassword"/>
+=======
             android:inputType="textPassword"
             />
+>>>>>>> Stashed changes
+=======
+            android:inputType="textPassword"
+            />
+>>>>>>> Stashed changes
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -88,9 +169,32 @@
         android:layout_below="@+id/login"
         android:text="@string/registrarse"
         android:layout_marginBottom="20dp"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+<<<<<<< HEAD
+        android:textAlignment="center"/>
+</RelativeLayout>
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@+id/login"/>
 
 
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> 61cc924 (cambio en vista de registro)
+>>>>>>> Stashed changes
+=======
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> 61cc924 (cambio en vista de registro)
+>>>>>>> Stashed changes
