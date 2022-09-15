@@ -1,6 +1,7 @@
 package com.example.proyectodismovk
 
 import android.webkit.JavascriptInterface
+import android.widget.Toast
 
 class JavascriptInterface(val callActivity: CallActivity) {
 
