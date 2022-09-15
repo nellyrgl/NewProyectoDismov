@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -19,6 +20,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var backPressedTime = 0L
     private lateinit var auth: FirebaseAuth
 
     val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
@@ -30,14 +32,13 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         loadLocate()
-
         Firebase.initialize(this)
 
         val btnChat = findViewById<Button>(R.id.chat)
         btnChat.setOnClickListener { chat() }
 
         val btnLenguaje = findViewById<Button>(R.id.cambiar_lenguaje)
-        btnLenguaje.setOnClickListener { cambiarlenguaje() }
+        btnLenguaje.setOnClickListener { cambiarLenguaje() }
         val actionBar = supportActionBar
         actionBar!!.title = resources.getString(R.string.app_name)
 
@@ -84,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun cambiarlenguaje() {
+    private fun cambiarLenguaje() {
         val listItems = arrayOf("Español", "English")
 
         val mBuilder = AlertDialog.Builder(this@MainActivity)
@@ -120,6 +121,15 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My_Lang", "")
         setLocate(language.toString())
+    }
+
+    override fun onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            super.onBackPressed()
+        }else{
+            Toast.makeText(applicationContext, getString(R.string.aviso_cerrado_aplicacion), Toast.LENGTH_SHORT).show()
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 
     private fun logoutUser() {
