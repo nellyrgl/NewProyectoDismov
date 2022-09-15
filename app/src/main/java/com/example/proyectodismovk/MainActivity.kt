@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         loadLocate()
-
         Firebase.initialize(this)
 
         val btnChat = findViewById<Button>(R.id.chat)
