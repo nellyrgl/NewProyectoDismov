@@ -8,16 +8,19 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var backPressedTime = 0L
     private lateinit var auth: FirebaseAuth
 
     val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
@@ -29,11 +32,13 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         loadLocate()
+        Firebase.initialize(this)
+
         val btnChat = findViewById<Button>(R.id.chat)
         btnChat.setOnClickListener { chat() }
 
         val btnLenguaje = findViewById<Button>(R.id.cambiar_lenguaje)
-        btnLenguaje.setOnClickListener { cambiar_lenguaje() }
+        btnLenguaje.setOnClickListener { cambiarlenguaje() }
         val actionBar = supportActionBar
         actionBar!!.title = resources.getString(R.string.app_name)
 
@@ -49,7 +54,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun video() {
+        val currentUser = auth.currentUser
         val intent = Intent(this, CallActivity::class.java)
+        if (currentUser != null) {
+            intent.putExtra("user",currentUser.email)
+        }
         startActivity(intent)
         finish()
     }
@@ -76,11 +85,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun cambiar_lenguaje() {
+    private fun cambiarlenguaje() {
         val listItems = arrayOf("Español", "English")
 
         val mBuilder = AlertDialog.Builder(this@MainActivity)
-        mBuilder.setTitle("Escoger Lenguaje")
+        mBuilder.setTitle(getString(R.string.lenguaje))
         mBuilder.setSingleChoiceItems(listItems, -1){ dialog, which ->
             if (which == 0){
                 setLocate ("es")
@@ -112,6 +121,15 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My_Lang", "")
         setLocate(language.toString())
+    }
+
+    override fun onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            super.onBackPressed()
+        }else{
+            Toast.makeText(applicationContext, getString(R.string.aviso_cerrado_aplicacion), Toast.LENGTH_SHORT).show()
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 
     private fun logoutUser() {

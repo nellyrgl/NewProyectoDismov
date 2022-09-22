@@ -43,12 +43,12 @@
         android:id="@+id/video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/chat"
+        android:layout_below="@+id/text_welcome"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:layout_below="@+id/text_welcome"
-        android:text="video" />
+        android:layout_toEndOf="@+id/chat"
+        android:text="@string/video" />
 
     <Button
         android:id="@+id/cambiar_lenguaje"

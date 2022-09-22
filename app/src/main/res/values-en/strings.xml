@@ -5,4 +5,15 @@
     <string name="cerrar_sesion">Log out</string>
     <string name="chat">Chat</string>
     <string name="cambiar_lenguaje">Change language</string>
+    <string name="lenguaje">Choose Language</string>
+    <string name="video">Video</string>
+    <string name="ingrese_credenciales_de_inicio_de_sesion">Input Log In Credentials</string>
+    <string name="correo">Email</string>
+    <string name="contrase_a">Password</string>
+    <string name="iniciar_sesion">Log In</string>
+    <string name="registrarse">Sign Up!</string>
+    <string name="nuevo_usuario">New User Sign Up</string>
+    <string name="confirmar_contrase_a">Confirm Password</string>
+    <string name="requerido">Required*</string>
+    <string name="aviso_cerrado_aplicacion">Tap again to close app</string>
 </resources>
