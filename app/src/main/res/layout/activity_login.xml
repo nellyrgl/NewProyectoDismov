@@ -7,13 +7,20 @@
     android:layout_margin="10dp"
     tools:context=".LoginActivity">
 
+<<<<<<< HEAD
     <TextView
         android:id="@+id/register_text"
         android:layout_width="wrap_content"
+=======
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_email_TIL"
+        android:layout_width="390dp"
+>>>>>>> 6979fa4fac7e4b09c0d0f7ec775298e2a8d56ed9
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+<<<<<<< HEAD
         android:text="@string/bienvenida_login"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +37,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_text"
+=======
+        app:startIconDrawable="@drawable/ic_person"
+        app:helperText="@string/requerido"
+        app:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+>>>>>>> 6979fa4fac7e4b09c0d0f7ec775298e2a8d56ed9
         android:hint="@string/correo">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,6 +62,11 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/contrase_a"
         app:startIconDrawable="@drawable/ic_lock"
+<<<<<<< HEAD
+=======
+        app:helperText="Requerido*"
+        app:helperTextTextColor="@color/red"
+>>>>>>> 6979fa4fac7e4b09c0d0f7ec775298e2a8d56ed9
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

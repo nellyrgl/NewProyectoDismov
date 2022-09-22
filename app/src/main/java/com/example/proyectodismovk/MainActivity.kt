@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun cambiarLenguaje() {
+
         val listItems = arrayOf("Español", "English")
 
         val mBuilder = AlertDialog.Builder(this@MainActivity)
