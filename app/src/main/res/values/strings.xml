@@ -15,6 +15,7 @@
     <string name="confirmar_contrase_a">Confirmar Contraseña</string>
     <string name="requerido">Requerido*</string>
     <string name="aviso_cerrado_aplicacion">Presione otra vez para cerrar la aplicacion</string>
+    <string name="matricula">Matricula</string>
     <array name="names">
         <item>Nombre</item>
         <item>Nombre</item>

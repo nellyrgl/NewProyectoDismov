@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import java.util.*
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     private var backPressedTime = 0L
     private lateinit var auth: FirebaseAuth
+    private lateinit var authrole: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
     val requestcode = 1
@@ -30,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Pruebas de roles de usuario
+        authrole = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
         auth = Firebase.auth
         loadLocate()
         Firebase.initialize(this)
@@ -122,6 +129,9 @@ class MainActivity : AppCompatActivity() {
         val language = sharedPreferences.getString("My_Lang", "")
         setLocate(language.toString())
     }
+
+//TODO: Realizar funcionalidad de roles de usuario
+    
 
     override fun onBackPressed() {
         if(backPressedTime + 2000 > System.currentTimeMillis()){
