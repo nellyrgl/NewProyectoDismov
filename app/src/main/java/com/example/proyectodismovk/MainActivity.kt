@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     private var backPressedTime = 0L
     private lateinit var auth: FirebaseAuth
-    private lateinit var authrole: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
     val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
@@ -33,10 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //Pruebas de roles de usuario
-        authrole = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        readFireStoreData()
         auth = Firebase.auth
         loadLocate()
         Firebase.initialize(this)
@@ -131,8 +127,6 @@ class MainActivity : AppCompatActivity() {
         setLocate(language.toString())
     }
 
-//TODO: Realizar funcionalidad de roles de usuario
-    
 
     override fun onBackPressed() {
         if(backPressedTime + 2000 > System.currentTimeMillis()){
@@ -141,6 +135,26 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, getString(R.string.aviso_cerrado_aplicacion), Toast.LENGTH_SHORT).show()
         }
         backPressedTime = System.currentTimeMillis()
+    }
+
+    private fun readFireStoreData(){
+        val auth = FirebaseAuth.getInstance()
+        val userID = auth.currentUser?.uid
+
+
+        val db = FirebaseFirestore.getInstance()
+        db.collection("usuarios").whereEqualTo("uid", userID)
+            .get()
+            .addOnCompleteListener{
+                val roles: StringBuffer = StringBuffer()
+
+                if(it.isSuccessful){
+                    for(document in it.result!!){
+                        roles.append(document.data.getValue("roles"))
+                    }
+                    Toast.makeText(this, "El usuario actual es $roles", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     private fun logoutUser() {

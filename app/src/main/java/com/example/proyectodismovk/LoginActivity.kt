@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
@@ -40,6 +41,9 @@ class LoginActivity : AppCompatActivity() {
         val tvSwitchToRegister = findViewById<TextView>(R.id.text_register)
         tvSwitchToRegister.setOnClickListener { switchToRegister() }
 
+        val tvregistroMaestros = findViewById<TextView>(R.id.registro_maestros)
+        tvregistroMaestros.setOnClickListener{ registroMaestros() }
+
     }
 
     private fun authenticateUser(){
@@ -49,12 +53,14 @@ class LoginActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.login_password)
         val password = etPassword.text.toString().trim()
 
+
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(baseContext, "Inicio de sesion exitoso",
-                        Toast.LENGTH_SHORT).show()
+                    /*Toast.makeText(baseContext, "Inicio de sesion exitoso",
+                        Toast.LENGTH_SHORT).show()*/
 
                     val user = FirebaseAuth.getInstance().currentUser
                     if(user!!.isEmailVerified){
@@ -76,6 +82,8 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+
+
     private fun showMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -84,6 +92,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun switchToRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun registroMaestros(){
+        val intent = Intent(this, RegisterActivityT::class.java)
         startActivity(intent)
         finish()
     }

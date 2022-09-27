@@ -13,7 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/registro_de_alumnos"
+        android:text="@string/registro_de_maestros"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_register">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_email"
+            android:id="@+id/register_emailT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_email_TIL">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/matricula"
+            android:id="@+id/matriculaT"
             android:maxLength="7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -75,11 +75,12 @@
         app:layout_constraintTop_toBottomOf="@+id/matricula_TIL">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_password"
+            android:id="@+id/register_passwordT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_password_confirm_TIL"
@@ -96,14 +97,14 @@
         app:layout_constraintTop_toBottomOf="@+id/register_password_TIL">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_password_confirm"
+            android:id="@+id/register_password_confirmT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/registerT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/register_password_confirm_TIL"
@@ -111,10 +112,10 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="20dp"/>
     <TextView
-        android:id="@+id/text_login"
+        android:id="@+id/text_loginT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/register"
+        app:layout_constraintTop_toBottomOf="@+id/registerT"
         android:text="@string/iniciar_sesion"
         android:layout_marginBottom="20dp"
         android:textAlignment="center"/>
