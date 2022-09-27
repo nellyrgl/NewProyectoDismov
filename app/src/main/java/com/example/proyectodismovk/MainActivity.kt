@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     private var backPressedTime = 0L
     private lateinit var auth: FirebaseAuth
-    private lateinit var authrole: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
     val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
@@ -34,9 +33,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Pruebas de roles de usuario
-        authrole = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
         auth = Firebase.auth
         loadLocate()
         Firebase.initialize(this)
@@ -130,8 +126,6 @@ class MainActivity : AppCompatActivity() {
         setLocate(language.toString())
     }
 
-//TODO: Realizar funcionalidad de roles de usuario
-    
 
     override fun onBackPressed() {
         if(backPressedTime + 2000 > System.currentTimeMillis()){
@@ -140,6 +134,20 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, getString(R.string.aviso_cerrado_aplicacion), Toast.LENGTH_SHORT).show()
         }
         backPressedTime = System.currentTimeMillis()
+    }
+
+    fun readData(){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("usuarios")
+            .get()
+            .addOnCompleteListener{
+                 val matricula: StringBuffer = StringBuffer()
+                if(it.isSuccessful){
+                    for(document in it.result!!){
+                        matricula.append(document.data.getValue("matricula")).append()
+                    }
+                }
+            }
     }
 
     private fun logoutUser() {

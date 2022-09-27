@@ -40,6 +40,9 @@ class LoginActivity : AppCompatActivity() {
         val tvSwitchToRegister = findViewById<TextView>(R.id.text_register)
         tvSwitchToRegister.setOnClickListener { switchToRegister() }
 
+        val tvregistroMaestros = findViewById<TextView>(R.id.registro_maestros)
+        tvregistroMaestros.setOnClickListener{ registroMaestros() }
+
     }
 
     private fun authenticateUser(){
@@ -48,6 +51,8 @@ class LoginActivity : AppCompatActivity() {
 
         val etPassword = findViewById<EditText>(R.id.login_password)
         val password = etPassword.text.toString().trim()
+
+
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -84,6 +89,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun switchToRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun registroMaestros(){
+        val intent = Intent(this, RegisterActivityT::class.java)
         startActivity(intent)
         finish()
     }

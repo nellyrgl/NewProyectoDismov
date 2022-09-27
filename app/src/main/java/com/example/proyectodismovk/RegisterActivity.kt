@@ -72,7 +72,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         if (password != confirmPassword) {
-            etConfirmPassword.error = "La contraseña NO coincide!"
+            etConfirmPassword.error = "Las contraseñas NO coinciden!"
             etConfirmPassword.requestFocus()
         }
         else{
@@ -107,7 +107,7 @@ class RegisterActivity : AppCompatActivity() {
         personCollectionRef.add(usuario)
     }
     private fun switchToLogIn() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

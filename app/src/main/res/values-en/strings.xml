@@ -11,10 +11,14 @@
     <string name="correo">Email</string>
     <string name="contrase_a">Password</string>
     <string name="iniciar_sesion">Log In</string>
-    <string name="registrarse">Sign Up!</string>
+    <string name="registrarse">Student\'s Sign Up</string>
+    <string name="registro_maestros">Teacher\'s Sign Up</string>
     <string name="nuevo_usuario">New User Sign Up</string>
     <string name="confirmar_contrase_a">Confirm Password</string>
     <string name="requerido">Required*</string>
     <string name="aviso_cerrado_aplicacion">Tap again to close app</string>
     <string name="matricula">Student ID</string>
+    <string name="registrarse_btn">Sign Up!</string>
+    <string name="registro_de_maestros">Teacher\'s Sign Up </string>
+    <string name="registro_de_alumnos">Student\'s Sign Up</string>
 </resources>
