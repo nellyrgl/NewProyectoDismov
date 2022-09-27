@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        readFireStoreData()
         auth = Firebase.auth
         loadLocate()
         Firebase.initialize(this)
@@ -136,16 +136,22 @@ class MainActivity : AppCompatActivity() {
         backPressedTime = System.currentTimeMillis()
     }
 
-    fun readData(){
+    private fun readFireStoreData(){
+        val auth = FirebaseAuth.getInstance()
+        val userID = auth.currentUser?.uid
+
+
         val db = FirebaseFirestore.getInstance()
-        db.collection("usuarios")
+        db.collection("usuarios").whereEqualTo("uid", userID)
             .get()
             .addOnCompleteListener{
-                 val matricula: StringBuffer = StringBuffer()
+                val roles: StringBuffer = StringBuffer()
+
                 if(it.isSuccessful){
                     for(document in it.result!!){
-                        matricula.append(document.data.getValue("matricula")).append()
+                        roles.append(document.data.getValue("roles"))
                     }
+                    Toast.makeText(this, "El usuario actual es $roles", Toast.LENGTH_SHORT).show()
                 }
             }
     }

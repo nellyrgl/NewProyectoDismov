@@ -16,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 class RegisterActivityT : AppCompatActivity() {
 
     private val personCollectionRefT = Firebase.firestore.collection("maestros")
+    private val personCollectionRef = Firebase.firestore.collection("usuarios")
 
     private lateinit var auth: FirebaseAuth
 
@@ -42,7 +43,11 @@ class RegisterActivityT : AppCompatActivity() {
         val etConfirmPassword = findViewById<EditText>(R.id.register_password_confirmT)
         val confirmPassword = etConfirmPassword.text.toString().trim()
 
+        val etMatricula = findViewById<EditText>(R.id.matriculaT)
+        val matricula = etMatricula.text.toString().toInt()
+
         val maestro = Maestro(email, password)
+        val usuario = Usuario(email, password, matricula)
 
         if (email.isEmpty()){
             etEmail.error = "Correo Requerido!"
@@ -64,6 +69,7 @@ class RegisterActivityT : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if(task.isSuccessful) {
                         guardarMaestro(maestro)
+                        guardarUsuario(usuario)
                         val user = FirebaseAuth.getInstance().currentUser
                         user!!.sendEmailVerification()
                             .addOnSuccessListener {
@@ -85,6 +91,10 @@ class RegisterActivityT : AppCompatActivity() {
 
 
 
+
+    private fun guardarUsuario(usuario: Usuario){
+        personCollectionRef.add(usuario)
+    }
 
     private fun guardarMaestro(maestro: Maestro){
         personCollectionRefT.add(maestro)

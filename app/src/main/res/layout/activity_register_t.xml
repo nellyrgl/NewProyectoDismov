@@ -39,6 +39,28 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/matricula_TIL"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/matricula"
+        app:startIconDrawable="@drawable/ic_matricula"
+        app:counterEnabled="true"
+        app:counterMaxLength="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_TIL">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/matriculaT"
+            android:maxLength="7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_password_TIL"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
@@ -50,7 +72,7 @@
         app:passwordToggleEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_email_TIL">
+        app:layout_constraintTop_toBottomOf="@+id/matricula_TIL">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_passwordT"
@@ -58,6 +80,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_password_confirm_TIL"
