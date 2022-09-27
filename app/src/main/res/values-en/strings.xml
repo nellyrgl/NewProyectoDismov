@@ -16,4 +16,5 @@
     <string name="confirmar_contrase_a">Confirm Password</string>
     <string name="requerido">Required*</string>
     <string name="aviso_cerrado_aplicacion">Tap again to close app</string>
+    <string name="matricula">Student ID</string>
 </resources>

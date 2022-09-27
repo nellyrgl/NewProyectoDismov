@@ -1,5 +1,6 @@
 package com.example.proyectodismovk
 
+import android.app.Person
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -11,10 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
 class RegisterActivity : AppCompatActivity() {
+
+    // creacion de usuario con funcion de firestore
+    private val personCollectionRef = Firebase.firestore.collection("usuarios")
 
     private lateinit var auth: FirebaseAuth
 
@@ -35,11 +40,18 @@ class RegisterActivity : AppCompatActivity() {
         val etEmail = findViewById<EditText>(R.id.register_email)
         val email = etEmail.text.toString().trim()
 
+        val etMatricula = findViewById<EditText>(R.id.matricula)
+        val matricula = etMatricula.text.toString().toInt()
+
         val etPassword = findViewById<EditText>(R.id.register_password)
         val password = etPassword.text.toString().trim()
 
         val etConfirmPassword = findViewById<EditText>(R.id.register_password_confirm)
         val confirmPassword = etConfirmPassword.text.toString().trim()
+
+        val usuario = Usuario(email, password, matricula)
+
+
 
         if (email.isEmpty()) {
             etEmail.error = "Correo Requerido!"
@@ -68,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         switchToLogIn()
-
+                        guardarUsuario(usuario)
                         val user = FirebaseAuth.getInstance().currentUser
                         user!!.sendEmailVerification()
                             .addOnSuccessListener {
@@ -92,7 +104,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-
+    private fun guardarUsuario(usuario: Usuario){
+        personCollectionRef.add(usuario)
+    }
     private fun switchToLogIn() {
         val intent = Intent(this@RegisterActivity, LoginActivity::class.java).apply {
         }
