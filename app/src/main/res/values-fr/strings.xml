@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoDismovk</string>
+    <string name="bienvenido">Bienvenue!</string>
+    <string name="cerrar_sesion">Fermer la session</string>
+    <string name="chat">Bavarder</string>
+    <string name="cambiar_lenguaje">Changer la langue</string>
+    <string name="lenguaje">Choisir la langue</string>
+    <string name="video">Vidéo</string>
+    <string name="bienvenida_login">Entrez les informations d\'identification de connexion de session</string>
+    <string name="correo">Courrier</string>
+    <string name="contrase_a">Mot de passe</string>
+    <string name="iniciar_sesion">Démarrer la session</string>
+    <string name="registrarse">Inscription des étudiants</string>
+    <string name="nuevo_usuario">Enregistrement d\'un nouvel utilisateur</string>
+    <string name="confirmar_contrase_a">Confirmer le mot de passe</string>
+    <string name="requerido">Obligatoire*</string>
+    <string name="aviso_cerrado_aplicacion">appuyez à nouveau pour fermer l\'application</string>
+    <string name="matricula">Inscription</string>
+    <string name="registro_maestros">Inscription des enseignants</string>
+    <string name="registrarse_btn">Registre</string>
+    <string name="registro_de_maestros">Inscription des enseignants</string>
+    <string name="registro_de_alumnos">Inscription des étudiants</string>
+</resources>

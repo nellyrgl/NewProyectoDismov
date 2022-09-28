@@ -79,6 +79,7 @@ class RegisterActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        switchToLogIn()
                         guardarUsuario(usuario)
                         val user = FirebaseAuth.getInstance().currentUser
                         user!!.sendEmailVerification()

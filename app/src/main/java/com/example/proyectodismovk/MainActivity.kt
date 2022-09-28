@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         btnChat.setOnClickListener { chat() }
 
         val btnLenguaje = findViewById<Button>(R.id.cambiar_lenguaje)
-        btnLenguaje.setOnClickListener { cambiarlenguaje() }
+        btnLenguaje.setOnClickListener { cambiarLenguaje() }
         val actionBar = supportActionBar
         actionBar!!.title = resources.getString(R.string.app_name)
 
@@ -88,8 +88,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun cambiarlenguaje() {
-        val listItems = arrayOf("Español", "English")
+    private fun cambiarLenguaje() {
+
+        val listItems = arrayOf("Español", "English", "French")
 
         val mBuilder = AlertDialog.Builder(this@MainActivity)
         mBuilder.setTitle(getString(R.string.lenguaje))
@@ -100,6 +101,10 @@ class MainActivity : AppCompatActivity() {
             }
             else if (which == 1){
                 setLocate ("en")
+                recreate()
+            }
+            else if (which == 2){
+                setLocate("fr")
                 recreate()
             }
             dialog.dismiss()
