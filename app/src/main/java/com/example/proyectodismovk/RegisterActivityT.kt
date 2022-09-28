@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -31,6 +28,12 @@ class RegisterActivityT : AppCompatActivity() {
 
         val tvSwitchToLogin = findViewById<TextView>(R.id.text_loginT)
         tvSwitchToLogin.setOnClickListener { switchToLogIn() }
+
+        val spinner = findViewById<Spinner>(R.id.spRoles)
+        // val lista = listOf("maestro", "alumno")
+        val lista = resources.getStringArray(R.array.roles)
+        val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
+        spinner.adapter = adaptador
     }
 
     private fun registerTeacher(){
@@ -46,8 +49,11 @@ class RegisterActivityT : AppCompatActivity() {
         val etMatricula = findViewById<EditText>(R.id.matriculaT)
         val matricula = etMatricula.text.toString().toInt()
 
+        val spRoles = findViewById<Spinner>(R.id.spRoles)
+        val roles = spRoles.selectedItemPosition.toString().trim()
+
         val maestro = Maestro(email, password)
-        val usuario = Usuario(email, password, matricula)
+        val usuario = Usuario(email, password, matricula, roles)
 
         if (email.isEmpty()){
             etEmail.error = "Correo Requerido!"

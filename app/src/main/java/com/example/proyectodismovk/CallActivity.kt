@@ -1,5 +1,6 @@
 package com.example.proyectodismovk
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,8 +9,10 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.*
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
@@ -22,24 +25,65 @@ class CallActivity : AppCompatActivity() {
 
     var firebaseRef = Firebase.database.reference.child("users")
 
+    var RolUsuario = false
+    var RolAmigo = false
+
     var isAudio = true
     var isVideo = true
+
+    val auth = FirebaseAuth.getInstance()
+    val userID = auth.currentUser?.uid
+
+    val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_call)
 
        intent.getStringExtra("user")?.let { username = it }
-/*
-        if(username.isNotEmpty()){
-            Toast.makeText(baseContext, "El usuario es: "+username, Toast.LENGTH_SHORT).show()
-        }
-*/
+
+        db.collection("usuarios").whereEqualTo("uid", userID)
+                .get()
+                .addOnCompleteListener{
+                    var roles2 = ""
+                    if(it.isSuccessful){
+                        for(document in it.result!!){
+                            roles2 = document.data.getValue("roles").toString()
+                            if (roles2 == "alumno"){
+                                RolUsuario = true
+                                Toast.makeText(this, "RolUusario $RolUsuario", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+
         val callBtn = findViewById<Button>(R.id.callBtn)
         callBtn.setOnClickListener {
             val friendNameEdit = findViewById<TextView>(R.id.friendNameEdit)
             friendsUsername = friendNameEdit.text.toString()
-            sendCallRequest()
+
+            val friendsUsername1 = friendNameEdit.text.toString()
+            db.collection("usuarios").whereEqualTo("email", friendsUsername1)
+                .get()
+                .addOnCompleteListener {
+                    var roles1 = ""
+                    if(it.isSuccessful){
+                        for(document in it.result!!){
+                            roles1 = document.data.getValue("roles").toString()
+                            if (roles1 == "alumno"){
+                                RolAmigo = true
+                                Toast.makeText(this, "rolAmigo $RolAmigo", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                    }
+                }
+            if(RolUsuario == true)
+            {
+                Toast.makeText(this, "ACCION NO PERMITIDA", Toast.LENGTH_SHORT).show()
+            }else{
+                sendCallRequest()
+            }
         }
 
         val toggleAudioBtn = findViewById<ImageView>(R.id.toggleAudioBtn)
@@ -54,6 +98,11 @@ class CallActivity : AppCompatActivity() {
             isVideo = !isVideo
             callJavascriptFunction("javascript:toggleVideo(\"${isVideo}\")")
             toggleVideoBtn.setImageResource(if (isVideo) R.drawable.ic_baseline_videocam_24 else R.drawable.ic_baseline_videocam_off_24 )
+        }
+
+        val endCall = findViewById<ImageView>(R.id.endCall)
+        endCall.setOnClickListener {
+            showMainActivity()
         }
 
         setupWebView()
@@ -196,6 +245,18 @@ class CallActivity : AppCompatActivity() {
         firebaseRef.child("friendsUsername").setValue(null)
         webView.loadUrl("about:blank")
         super.onDestroy()
+    }
+
+    private fun identificarRol(): Boolean
+    {
+
+      return RolUsuario; RolAmigo
+    }
+
+    private fun showMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }
