@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun cambiarLenguaje() {
 
-        val listItems = arrayOf("Español", "English")
+        val listItems = arrayOf("Español", "English", "French")
 
         val mBuilder = AlertDialog.Builder(this@MainActivity)
         mBuilder.setTitle(getString(R.string.lenguaje))
@@ -101,6 +101,10 @@ class MainActivity : AppCompatActivity() {
             }
             else if (which == 1){
                 setLocate ("en")
+                recreate()
+            }
+            else if (which == 2){
+                setLocate("fr")
                 recreate()
             }
             dialog.dismiss()
