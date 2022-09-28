@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import java.util.*
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private var backPressedTime = 0L
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
     val requestcode = 1
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        readFireStoreData()
         auth = Firebase.auth
         loadLocate()
         Firebase.initialize(this)
@@ -86,7 +89,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun cambiarLenguaje() {
-        val listItems = arrayOf("Español", "English")
+
+        val listItems = arrayOf("Español", "English", "French")
 
         val mBuilder = AlertDialog.Builder(this@MainActivity)
         mBuilder.setTitle(getString(R.string.lenguaje))
@@ -97,6 +101,10 @@ class MainActivity : AppCompatActivity() {
             }
             else if (which == 1){
                 setLocate ("en")
+                recreate()
+            }
+            else if (which == 2){
+                setLocate("fr")
                 recreate()
             }
             dialog.dismiss()
@@ -123,6 +131,7 @@ class MainActivity : AppCompatActivity() {
         setLocate(language.toString())
     }
 
+
     override fun onBackPressed() {
         if(backPressedTime + 2000 > System.currentTimeMillis()){
             super.onBackPressed()
@@ -130,6 +139,26 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, getString(R.string.aviso_cerrado_aplicacion), Toast.LENGTH_SHORT).show()
         }
         backPressedTime = System.currentTimeMillis()
+    }
+
+    private fun readFireStoreData(){
+        val auth = FirebaseAuth.getInstance()
+        val userID = auth.currentUser?.uid
+
+
+        val db = FirebaseFirestore.getInstance()
+        db.collection("usuarios").whereEqualTo("uid", userID)
+            .get()
+            .addOnCompleteListener{
+                val roles: StringBuffer = StringBuffer()
+
+                if(it.isSuccessful){
+                    for(document in it.result!!){
+                        roles.append(document.data.getValue("roles"))
+                    }
+                    Toast.makeText(this, "El usuario actual es $roles", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     private fun logoutUser() {

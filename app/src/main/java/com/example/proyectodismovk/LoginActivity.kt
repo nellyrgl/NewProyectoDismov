@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
@@ -20,12 +21,15 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
+        /*
         if(currentUser != null){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
             return
         }
+        */
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +44,9 @@ class LoginActivity : AppCompatActivity() {
         val tvSwitchToRegister = findViewById<TextView>(R.id.text_register)
         tvSwitchToRegister.setOnClickListener { switchToRegister() }
 
+        val tvregistroMaestros = findViewById<TextView>(R.id.registro_maestros)
+        tvregistroMaestros.setOnClickListener{ registroMaestros() }
+
     }
 
     private fun authenticateUser(){
@@ -53,8 +60,8 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(baseContext, "Inicio de sesion exitoso",
-                        Toast.LENGTH_SHORT).show()
+                    /*Toast.makeText(baseContext, "Inicio de sesion exitoso",
+                        Toast.LENGTH_SHORT).show()*/
 
                     val user = FirebaseAuth.getInstance().currentUser
                     if(user!!.isEmailVerified){
@@ -62,10 +69,15 @@ class LoginActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT).show()
                         showMainActivity()
                     }else{
+                        Toast.makeText(baseContext, "Favor de verificar su correo",
+                            Toast.LENGTH_SHORT).show()
+
                         user!!.sendEmailVerification()
                             .addOnSuccessListener {
-                                Toast.makeText(baseContext, "Favor de verificar su correo",
+                                /*Toast.makeText(baseContext, "Favor de verificar su correo",
                                     Toast.LENGTH_SHORT).show()
+
+                                 */
                             }
                     }
                 } else {
@@ -76,6 +88,8 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+
+
     private fun showMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -84,6 +98,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun switchToRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun registroMaestros(){
+        val intent = Intent(this, RegisterActivityT::class.java)
         startActivity(intent)
         finish()
     }

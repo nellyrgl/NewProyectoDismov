@@ -10,11 +10,16 @@
     <string name="correo">Correo</string>
     <string name="contrase_a">Contraseña</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
-    <string name="registrarse">Registrarse!</string>
+    <string name="registrarse">Registro para Alumnos</string>
     <string name="nuevo_usuario">Registro de nuevo usuario</string>
     <string name="confirmar_contrase_a">Confirmar Contraseña</string>
     <string name="requerido">Requerido*</string>
     <string name="aviso_cerrado_aplicacion">Presione otra vez para cerrar la aplicacion</string>
+    <string name="matricula">Matricula</string>
+    <string name="registro_maestros">Registro para Maestros</string>
+    <string name="registrarse_btn">Registrarse</string>
+    <string name="registro_de_maestros">Registro de Maestros</string>
+    <string name="registro_de_alumnos">Registro de Alumnos</string>
     <array name="names">
         <item>Nombre</item>
         <item>Nombre</item>
