@@ -30,7 +30,7 @@ class RegisterActivityT : AppCompatActivity() {
         btnRegister.setOnClickListener { registerTeacher() }
 
         val tvSwitchToLogin = findViewById<TextView>(R.id.text_loginT)
-        tvSwitchToLogin.setOnClickListener { switchToLogin() }
+        tvSwitchToLogin.setOnClickListener { switchToLogIn() }
     }
 
     private fun registerTeacher(){
@@ -73,7 +73,7 @@ class RegisterActivityT : AppCompatActivity() {
                         val user = FirebaseAuth.getInstance().currentUser
                         user!!.sendEmailVerification()
                             .addOnSuccessListener {
-                                switchToLogin()
+                                switchToLogIn()
                                 Toast.makeText(baseContext, "correo de Verificacion enviado", Toast.LENGTH_SHORT).show()
                             }
                         
@@ -85,13 +85,6 @@ class RegisterActivityT : AppCompatActivity() {
         }
     }
 
-
-
-
-
-
-
-
     private fun guardarUsuario(usuario: Usuario){
         personCollectionRef.add(usuario)
     }
@@ -100,7 +93,7 @@ class RegisterActivityT : AppCompatActivity() {
         personCollectionRefT.add(maestro)
     }
 
-    private fun switchToLogin(){
+    private fun switchToLogIn(){
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
