@@ -21,12 +21,15 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
+        /*
         if(currentUser != null){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
             return
         }
+        */
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +56,6 @@ class LoginActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.login_password)
         val password = etPassword.text.toString().trim()
 
-
-
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -68,10 +69,15 @@ class LoginActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT).show()
                         showMainActivity()
                     }else{
+                        Toast.makeText(baseContext, "Favor de verificar su correo",
+                            Toast.LENGTH_SHORT).show()
+
                         user!!.sendEmailVerification()
                             .addOnSuccessListener {
-                                Toast.makeText(baseContext, "Favor de verificar su correo",
+                                /*Toast.makeText(baseContext, "Favor de verificar su correo",
                                     Toast.LENGTH_SHORT).show()
+
+                                 */
                             }
                     }
                 } else {
