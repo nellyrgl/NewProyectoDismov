@@ -4,10 +4,8 @@ import android.app.Person
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +32,12 @@ class RegisterActivity : AppCompatActivity() {
 
         val tvSwitchToLogIn = findViewById<TextView>(R.id.text_login)
         tvSwitchToLogIn.setOnClickListener { switchToLogIn() }
+
+        val spinner = findViewById<Spinner>(R.id.spRoles)
+        // val lista = listOf("maestro", "alumno")
+        val lista = resources.getStringArray(R.array.roles)
+        val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
+        spinner.adapter = adaptador
     }
 
     private fun registerUser(){
@@ -49,7 +53,10 @@ class RegisterActivity : AppCompatActivity() {
         val etConfirmPassword = findViewById<EditText>(R.id.register_password_confirm)
         val confirmPassword = etConfirmPassword.text.toString().trim()
 
-        val usuario = Usuario(email, password, matricula)
+        val spRoles = findViewById<Spinner>(R.id.spRoles)
+        val roles = spRoles.selectedItem.toString().trim()
+
+        val usuario = Usuario(email, password, matricula, roles)
 
 
 

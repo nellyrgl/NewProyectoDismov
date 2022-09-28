@@ -20,6 +20,11 @@
     <string name="registrarse_btn">Registrarse</string>
     <string name="registro_de_maestros">Registro de Maestros</string>
     <string name="registro_de_alumnos">Registro de Alumnos</string>
+
+    <string-array name="roles">
+        <item>maestro</item>
+        <item>alumno</item>
+    </string-array>
     <array name="names">
         <item>Nombre</item>
         <item>Nombre</item>
